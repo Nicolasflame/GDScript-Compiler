@@ -147,6 +147,9 @@ Options:
 5. Ensure all tests pass
 6. Submit a pull request
 
+##NOTES
+System calls are not fully implemented yet..
+
 ## License
 
 This project is open source. See the LICENSE file for details.
