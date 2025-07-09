@@ -147,7 +147,7 @@ Options:
 5. Ensure all tests pass
 6. Submit a pull request
 
-##NOTES
+## NOTES
 System calls are not fully implemented yet..
 
 ## License
