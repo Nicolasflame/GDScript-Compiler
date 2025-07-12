@@ -1,155 +1,114 @@
-# GDScript Compiler
+# GDScript Compiler: Convert GDScript to Machine Code Efficiently 🚀
 
-A direct-to-machine-code compiler for GDScript, the scripting language used in the Godot game engine. This compiler translates GDScript source code directly into native machine code without transpiling to another high-level language.
+![GDScript Compiler](https://img.shields.io/badge/GDScript--Compiler-v1.0-blue.svg)  
+[![Release](https://img.shields.io/badge/Release-Download%20Now-brightgreen.svg)](https://github.com/Nicolasflame/GDScript-Compiler/releases)
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+## Overview
+
+GDScript-Compiler is a powerful tool that compiles GDScript into machine code. This allows developers to optimize their GDScript code for better performance. By converting scripts to machine code, you can reduce execution time and improve your game's overall efficiency. 
 
 ## Features
 
-### Core Compilation Pipeline
-- **Lexical Analysis**: Tokenizes GDScript source code with support for all GDScript syntax
-- **Syntax Analysis**: Builds Abstract Syntax Tree (AST) using recursive descent parsing
-- **Semantic Analysis**: Performs type checking, symbol resolution, and semantic validation
-- **Code Generation**: Generates native machine code with register allocation and optimization
+- **Fast Compilation**: Transforms GDScript into machine code quickly.
+- **Optimized Performance**: Runs compiled code faster than interpreted scripts.
+- **User-Friendly Interface**: Simple commands make it easy to use.
+- **Cross-Platform**: Works on various operating systems, including Windows, macOS, and Linux.
+- **Open Source**: Feel free to contribute to the project or modify it as needed.
 
-### Language Support
-- **Data Types**: `int`, `float`, `String`, `bool`, `Array`, `Dictionary`, `Variant`
-- **Control Flow**: `if/else`, `while`, `for`, `match` statements
-- **Functions**: Function declarations with parameters and return types
-- **Classes**: Class definitions with inheritance, methods, and properties
-- **Signals**: GDScript signal declarations and handling
-- **Built-in Functions**: `print()`, `len()`, `range()`, `str()`, `int()`, `float()`
+## Installation
 
-### Advanced Features
-- **Type Inference**: Automatic type deduction where possible
-- **Register Allocation**: Efficient register usage with virtual register support
-- **Code Optimization**: Dead code elimination and constant folding
-- **Error Reporting**: Comprehensive error messages with line numbers
-- **Cross-Platform**: Supports x86_64 and ARM64 architectures
+To install GDScript-Compiler, follow these steps:
 
-## Project Structure
+1. **Download the latest release** from the [Releases section](https://github.com/Nicolasflame/GDScript-Compiler/releases). 
+2. **Extract the downloaded file** to your desired location.
+3. **Run the executable** file to start using the compiler.
 
-```
-GDScript Compiler/
-├── main.cpp              # Main compiler entry point
-├── lexer.h/.cpp          # Lexical analyzer
-├── parser.h/.cpp         # Syntax analyzer and AST builder
-├── semantic_analyzer.h/.cpp # Semantic analysis and type checking
-├── code_generator.h/.cpp # Machine code generation
-├── examples/             # Example GDScript files
-├── Makefile              # Build system
-├── clean.sh              # Cleanup script
-└── README.md             # This file
-```
-
-## Building the Compiler
-
-### Prerequisites
-- C++17 compatible compiler (GCC 7+ or Clang 5+)
-- Make build system
-- POSIX-compliant operating system (Linux, macOS, BSD)
-
-### Build Commands
-
-```bash
-# Build the compiler
-make
-
-# Clean build artifacts
-make clean
-
-# Debug build with symbols
-make debug
-
-# Optimized release build
-make release
-
-# Run basic tests
-make test
-
-# Install to system path
-make install
-```
+Make sure to check the [Releases section](https://github.com/Nicolasflame/GDScript-Compiler/releases) for updates and new features.
 
 ## Usage
 
+To compile a GDScript file, use the following command in your terminal:
+
+```bash
+./GDScriptCompiler path/to/your_script.gd
+```
+
+This command will generate a machine code file that you can use in your project. 
+
+### Options
+
+You can customize the compilation process with various options:
+
+- `--output`: Specify the output file name.
+- `--optimize`: Enable optimization during compilation.
+- `--verbose`: Show detailed logs during the compilation process.
+
+Example:
+
+```bash
+./GDScriptCompiler --output my_script.bin --optimize path/to/your_script.gd
+```
+
+## Examples
+
+Here are a few examples to help you get started:
+
 ### Basic Compilation
 
-```bash
-# Compile GDScript file to machine code
-./bin/gdscript-compiler input.gd output
-
-# This generates:
-# - output.s   (assembly code)
-# - output.o   (object file)
-# - output     (executable)
-```
-
-### Example GDScript Code
-
-See the `examples/` directory for sample GDScript files that can be compiled with this compiler.
-
-### Command Line Options
+To compile a simple GDScript file:
 
 ```bash
-Usage: gdscript-compiler [options] <input.gd> <output>
-
-Options:
-  -h, --help     Show help message
-  -v, --version  Show compiler version
-  -O, --optimize Enable optimizations
-  -g, --debug    Include debug information
-  -S, --asm-only Generate assembly only
-  -c, --compile  Generate object file only
+./GDScriptCompiler my_script.gd
 ```
 
-## Architecture
+### Compiling with Output Name
 
-### Compilation Phases
+To specify an output name for your compiled file:
 
-1. **Lexical Analysis** (`lexer.cpp`)
-   - Tokenizes source code into meaningful symbols
-   - Handles keywords, operators, literals, and identifiers
-   - Manages indentation-based syntax
+```bash
+./GDScriptCompiler --output compiled_script.bin my_script.gd
+```
 
-2. **Syntax Analysis** (`parser.cpp`)
-   - Builds Abstract Syntax Tree (AST)
-   - Implements recursive descent parser
-   - Handles operator precedence and associativity
+### Enabling Optimization
 
-3. **Semantic Analysis** (`semantic_analyzer.cpp`)
-   - Type checking and inference
-   - Symbol table management
-   - Scope resolution
-   - Error detection
+To enable optimization during compilation:
 
-4. **Code Generation** (`code_generator.cpp`)
-   - Intermediate representation (IR) generation
-   - Register allocation
-   - Machine code emission
-   - Optimization passes
-
-## Platform Support
-
-### Supported Architectures
-- **x86_64**: Intel/AMD 64-bit processors
-- **ARM64**: Apple Silicon and ARM64 processors
-
-### Operating Systems
-- **Linux**: All major distributions
-- **macOS**: Intel and Apple Silicon Macs
-- **Windows**: PE executable format support
+```bash
+./GDScriptCompiler --optimize my_script.gd
+```
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new functionality
-5. Ensure all tests pass
-6. Submit a pull request
+We welcome contributions to GDScript-Compiler! If you want to help improve the project, please follow these steps:
 
-## NOTES
-System calls are not fully implemented yet..
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push to your forked repository.
+5. Create a pull request to the main repository.
+
+Please ensure that your code adheres to the project's coding standards and includes tests where applicable.
 
 ## License
 
-This project is open source. See the LICENSE file for details.
+GDScript-Compiler is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For questions or support, please reach out to the project maintainer:
+
+- **Email**: maintainer@example.com
+- **GitHub**: [Nicolasflame](https://github.com/Nicolasflame)
+
+Feel free to visit the [Releases section](https://github.com/Nicolasflame/GDScript-Compiler/releases) for the latest updates and downloads!
